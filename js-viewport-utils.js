@@ -165,23 +165,19 @@
             }
 
             return result;
+        },
+        inViewportTop: function (element) {
+            return viewportUtils.inViewport(element, {sides: "top"});
+        },
+        inViewportRight: function (element) {
+            return viewportUtils.inViewport(element, {sides: "right"});
+        },
+        inViewportBottom: function (element) {
+            return viewportUtils.inViewport(element, {sides: "bottom"});
+        },
+        inViewportLeft: function (element) {
+            return viewportUtils.inViewport(element, {sides: "left"});
         }
-    };
-
-    viewportUtils.prototype.inViewportTop = function (element) {
-        return viewportUtils.inViewport(element, {sides: "top"});
-    };
-
-    viewportUtils.prototype.inViewportRight = function (element) {
-        return viewportUtils.inViewport(element, {sides: "right"});
-    };
-
-    viewportUtils.prototype.inViewportBottom = function (element) {
-        return viewportUtils.inViewport(element, {sides: "bottom"});
-    };
-
-    viewportUtils.prototype.inViewportLeft = function (element) {
-        return viewportUtils.inViewport(element, {sides: "left"});
     };
 
     return viewportUtils;

@@ -7,3 +7,5 @@
 * Added changelog
 * Added readme and license
 
+#1.0.2
+* Fixed shorthands (for real)
