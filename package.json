@@ -1,0 +1,30 @@
+{
+  "name": "js-viewport-utils",
+  "version": "1.0.0",
+  "description": "A set of viewport utils",
+  "main": "js-viewport-utils.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonysamperi/js-viewport-utils.git"
+  },
+  "keywords": [
+    "within-viewport",
+    "browser",
+    "detect",
+    "event",
+    "infinite-scroll",
+    "scroll",
+    "view",
+    "viewport",
+    "window"
+  ],
+  "author": "Tony Samperi <github@tonysamperi.it> (https://tonysamperi.github.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tonysamperi/js-viewport-utils/issues"
+  },
+  "homepage": "https://github.com/tonysamperi/js-viewport-utils"
+}
