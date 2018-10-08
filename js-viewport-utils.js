@@ -46,22 +46,22 @@
                 elem = elem.get(0);
             }
 
-            if (typeof elem !== 'object' || elem.nodeType !== 1) {
-                throw new Error('First argument must be an element');
+            if (typeof elem !== "object" || elem.nodeType !== 1) {
+                throw new Error("First argument must be an element");
             }
 
             settings = options || {};
 
             // Build configuration from defaults and user-provided settings and metadata
-            config.container = settings.container || typeof document !== 'undefined' ? document.body : window;
-            config.sides = settings.sides || 'all';
+            config.container = settings.container || typeof document !== "undefined" ? document.body : window;
+            config.sides = settings.sides || "all";
             config.top = settings.top || 0;
             config.right = settings.right || 0;
             config.bottom = settings.bottom || 0;
             config.left = settings.left || 0;
 
             // Extract the DOM node from a jQuery collection
-            if (typeof jQuery !== 'undefined' && config.container instanceof jQuery) {
+            if (typeof jQuery !== "undefined" && config.container instanceof jQuery) {
                 config.container = config.container.get(0);
             }
 
@@ -168,20 +168,20 @@
         }
     };
 
-    viewportUtils.inViewport.prototype.top = function (element) {
-        return viewportUtils.inViewport(element, {sides: 'top'});
+    viewportUtils.prototype.inViewportTop = function (element) {
+        return viewportUtils.inViewport(element, {sides: "top"});
     };
 
-    viewportUtils.inViewport.prototype.right = function (element) {
-        return viewportUtils.inViewport(element, {sides: 'right'});
+    viewportUtils.prototype.inViewportRight = function (element) {
+        return viewportUtils.inViewport(element, {sides: "right"});
     };
 
-    viewportUtils.inViewport.prototype.bottom = function (element) {
-        return viewportUtils.inViewport(element, {sides: 'bottom'});
+    viewportUtils.prototype.inViewportBottom = function (element) {
+        return viewportUtils.inViewport(element, {sides: "bottom"});
     };
 
-    viewportUtils.inViewport.prototype.left = function (element) {
-        return viewportUtils.inViewport(element, {sides: 'left'});
+    viewportUtils.prototype.inViewportLeft = function (element) {
+        return viewportUtils.inViewport(element, {sides: "left"});
     };
 
     return viewportUtils;
