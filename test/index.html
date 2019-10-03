@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>JS Viewport Utils</title>
+		<meta name="description" content="">
+	</head>
+	<body>
+		<header>
+			<!-- site-wide header -->
+			<h1>JS Viewport Utils test page <!-- site name --></h1>
+		</header>
+
+		<main id="viewport" style="overflow: visible; border: 2px dashed #BBB; padding: 16px; position: relative">
+			<h2 style="margin: 0; color: #BBB">Viewport</h2>
+			<!-- this page’s main content -->
+			<script type="text/javascript" src="js-viewport-utils.umd.js"></script>
+			<h3>jsViewportUtils.inViewport(&lt;the blue square&gt;) = <span id="test1"></span></h3>
+			<h3>jsViewportUtils.inViewportBottom(&lt;the blue square&gt;) = <span id="test2"></span></h3>
+			<h3>jsViewportUtils.inViewport(&lt;the red square&gt;) = <span id="test3"></span></h3>
+			<h3>jsViewportUtils.inViewport(&lt;the green square&gt;) = <span id="test4"></span></h3>
+			<div id="blue_square" style="width: 100px; height: 100px; background: blue;"></div>
+			<div id="red_square"
+				 style="width: 100px; height: 100px; background: red; position: absolute; bottom: -150px"></div>
+			<div id="green_square"
+				 style="width: 100px; height: 100px; background: green; position: absolute; left: calc(100% - 100px); bottom: -50px"></div>
+			<script type="text/javascript">
+                var $test1 = document.getElementById("test1");
+                var $test2 = document.getElementById("test2");
+                var $test3 = document.getElementById("test3");
+                var $test4 = document.getElementById("test4");
+                var $viewport = document.getElementById("viewport");
+                $test1.innerHTML = jsViewportUtils.inViewport(document.getElementById("blue_square"), {container: $viewport}) ? "YES" : "NO";
+                $test2.innerHTML = jsViewportUtils.inViewportBottom(document.getElementById("blue_square")) ? "YES" : "NO";
+                $test3.innerHTML = jsViewportUtils.inViewport(document.getElementById("red_square"), {container: $viewport}) ? "YES" : "NO";
+                $test4.innerHTML = jsViewportUtils.inViewport(document.getElementById("green_square"), {container: $viewport}) ? "YES" : "NO";
+			</script>
+		</main>
+
+		<nav>
+			<!-- site-wide navigation -->
+		</nav>
+
+		<footer>
+			<!-- site-wide footer -->
+		</footer>
+
+	</body>
+</html>
