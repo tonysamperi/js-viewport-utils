@@ -727,7 +727,7 @@
                       elem = elem.get(0);
                   }
                   // Extract the DOM node from a jQuery collection
-                  if (!!options && options.container.jquery) {
+                  if (!!options && !!options.container && options.container.jquery) {
                       options.container = options.container.get(0);
                   }
               }

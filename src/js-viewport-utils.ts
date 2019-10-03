@@ -52,7 +52,7 @@ const jsViewportUtils = (function () {
                     elem = (elem as JQuery).get(0);
                 }
                 // Extract the DOM node from a jQuery collection
-                if (!!options && (options.container as JQuery).jquery) {
+                if (!!options && !!options.container && (options.container as JQuery).jquery) {
                     options.container = (options.container as JQuery).get(0) as HTMLElement;
                 }
             }

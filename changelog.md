@@ -14,3 +14,6 @@
 * Added typings
 * New interfaces
 * Improved exports (single methods instead of object)
+
+#2.0.1
+* Fixed issue when jQuery exists
