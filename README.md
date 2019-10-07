@@ -35,9 +35,9 @@ jQuery plugin:
 <script src="jquery.js"></script>
 ```
 
-### In Angular projects
+### In Angular projects / Typescript / ES6
 ```ts
-import * as viewportUtils from "js-viewport-utils";
+import {inViewport, inViewportBottom} from "js-viewport-utils";
 ```
 
 ## Usage
