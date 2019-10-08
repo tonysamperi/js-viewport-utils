@@ -41,10 +41,11 @@ const jsViewportUtils = (function () {
             let containerScrollLeft: number;
             let elemBoundingRect: ClientRect | DOMRect;
             let isWindow: boolean;
-            let scrollBarWidths = [0, 0];
+            const scrollBarWidths = [0, 0];
             const sidesRegex = /^TOP$|^RIGHT$|^BOTTOM$|^LEFT$|^ALL$/;
             // TMP VARS
-            let i: number, result: boolean = !1;
+            let i: number;
+            let result: boolean = !1;
 
             // Handle jQuery
             if (typeof jQuery !== "undefined") {
@@ -88,7 +89,7 @@ const jsViewportUtils = (function () {
                     }
                 },
                 [JsViewportSides.BOTTOM]: function () {
-                    var containerHeight = 0;
+                    let containerHeight = 0;
 
                     if (isWindow) {
                         if (canUseWindowDimensions) {
