@@ -1,4 +1,4 @@
-# JS Viewport Utils 2.0.1
+# JS Viewport Utils 2.0.2
 
 Includes:
 

@@ -17,3 +17,9 @@
 
 #2.0.1
 * Fixed issue when jQuery exists
+
+#2.0.2
+* Removed useless lodash dependency
+* Fixed test page
+* Added Jest tests
+* Refactor

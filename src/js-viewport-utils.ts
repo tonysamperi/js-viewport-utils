@@ -7,7 +7,6 @@
  * @date        2019-10-03
  */
 
-import defaults from "lodash.defaults";
 import {
     JsViewportSettings,
     JsViewportSides,
@@ -59,7 +58,10 @@ const jsViewportUtils = (function () {
             }
 
             // Build configuration from defaults and user-provided settings and metadata
-            const config: JsViewportConfig = defaults({}, options || {}, jsViewportDefaults) as JsViewportConfig;
+            const config: JsViewportConfig = {
+                ...jsViewportDefaults,
+                ...options
+            } as JsViewportConfig;
 
             // Use the window as the container if the user specified the body or a non-element
             if (config.container === document.body || (config.container as HTMLElement).nodeType !== 1) {
@@ -178,8 +180,8 @@ const jsViewportUtils = (function () {
     return viewportUtils;
 })();
 
-export let inViewport = jsViewportUtils.inViewport;
-export let inViewportTop = jsViewportUtils.inViewportTop;
-export let inViewportRight = jsViewportUtils.inViewportRight;
-export let inViewportBottom = jsViewportUtils.inViewportBottom;
-export let inViewportLeft = jsViewportUtils.inViewportLeft;
+export const inViewport = jsViewportUtils.inViewport;
+export const inViewportTop = jsViewportUtils.inViewportTop;
+export const inViewportRight = jsViewportUtils.inViewportRight;
+export const inViewportBottom = jsViewportUtils.inViewportBottom;
+export const inViewportLeft = jsViewportUtils.inViewportLeft;
