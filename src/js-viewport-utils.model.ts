@@ -29,7 +29,7 @@ export enum JsViewportSides {
 export type JsViewportSidesRef<T = any> = { [key in keyof typeof JsViewportSides]: T };
 
 export const jsViewportDefaults: JsViewportConfig = {
-    container: typeof document !== "undefined" ? document.body : window,
+    container: document.body || window,
     sides: [JsViewportSides.ALL],
     top: 0,
     right: 0,

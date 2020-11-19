@@ -17,10 +17,10 @@ import {
 
 export * from "./js-viewport-utils.model";
 
-const jsViewportUtils = (function () {
+const jsViewportUtils = (() => {
 
     // IE 8 and lower fail this
-    const canUseWindowDimensions: boolean = typeof window !== "undefined" && window.innerHeight !== undefined;
+    const canUseWindowDimensions: boolean = window && typeof window.innerHeight === typeof 0;
 
     const viewportUtils = {
         /**
@@ -29,7 +29,7 @@ const jsViewportUtils = (function () {
          * @param  {JsViewportSettings}  options    Optional settings
          * @return {Boolean}            Whether the element was completely within the viewport
          */
-        inViewport: function (elem: HTMLElement | JQuery<HTMLElement>, options?: JsViewportSettings) {
+        inViewport: (elem: HTMLElement | JQuery<HTMLElement>, options?: JsViewportSettings) => {
 
             if (!elem || typeof elem !== "object" || (elem as HTMLElement).nodeType !== 1) {
                 throw new Error("First argument must be an element!");
@@ -52,7 +52,7 @@ const jsViewportUtils = (function () {
                     elem = (elem as JQuery).get(0);
                 }
                 // Extract the DOM node from a jQuery collection
-                if (!!options && !!options.container && (options.container as JQuery).jquery) {
+                if (options && options.container && (options.container as JQuery).jquery) {
                     options.container = (options.container as JQuery).get(0) as HTMLElement;
                 }
             }
@@ -74,7 +74,7 @@ const jsViewportUtils = (function () {
             isWindow = (config.container === window);
 
             const isSideIn: JsViewportSidesRef<() => boolean> = {
-                [JsViewportSides.TOP]: function () {
+                [JsViewportSides.TOP]: () => {
                     if (isWindow) {
                         return (elemBoundingRect.top >= config.top);
                     }
@@ -82,15 +82,12 @@ const jsViewportUtils = (function () {
                         return (elemBoundingRect.top >= containerScrollTop - (containerScrollTop - containerBoundingRect.top) + config.top);
                     }
                 },
-                [JsViewportSides.RIGHT]: function () {
-                    if (isWindow) {
-                        return (elemBoundingRect.right <= (containerBoundingRect.right + containerScrollLeft) - config.right);
-                    }
-                    else {
-                        return (elemBoundingRect.right <= containerBoundingRect.right - scrollBarWidths[0] - config.right);
-                    }
+                [JsViewportSides.RIGHT]: () => {
+                    const ctScroll = isWindow ? containerScrollLeft : -scrollBarWidths[0];
+
+                    return elemBoundingRect.right <= (containerBoundingRect.right + ctScroll - config.right);
                 },
-                [JsViewportSides.BOTTOM]: function () {
+                [JsViewportSides.BOTTOM]: () => {
                     let containerHeight = 0;
 
                     if (isWindow) {
@@ -107,7 +104,7 @@ const jsViewportUtils = (function () {
 
                     return (elemBoundingRect.bottom <= containerHeight - scrollBarWidths[1] - config.bottom);
                 },
-                [JsViewportSides.LEFT]: function () {
+                [JsViewportSides.LEFT]: () => {
                     if (isWindow) {
                         return (elemBoundingRect.left >= config.left);
                     }
@@ -117,7 +114,7 @@ const jsViewportUtils = (function () {
                 },
 
                 // Element is within all four boundaries
-                [JsViewportSides.ALL]: function () {
+                [JsViewportSides.ALL]: () => {
                     return (isSideIn.TOP() && isSideIn.BOTTOM() && isSideIn.LEFT() && isSideIn.RIGHT());
                 }
             };
@@ -145,13 +142,12 @@ const jsViewportUtils = (function () {
 
 
             // Loop through all of the sides
-            const sides = config.sides as JsViewportSides[];
-            i = sides.length;
+            i = config.sides.length;
 
             while (i--) {
                 // Test the element against each side of the viewport that was requested
-                if (sidesRegex.test(sides[i])) {
-                    if (isSideIn[sides[i]]()) {
+                if (sidesRegex.test(config.sides[i])) {
+                    if (isSideIn[config.sides[i]]()) {
                         result = !0;
                     }
                     else {
@@ -163,16 +159,16 @@ const jsViewportUtils = (function () {
 
             return result;
         },
-        inViewportTop: function (element: HTMLElement | JQuery<HTMLElement>) {
+        inViewportTop: (element: HTMLElement | JQuery<HTMLElement>) => {
             return viewportUtils.inViewport(element, {sides: [JsViewportSides.TOP]});
         },
-        inViewportRight: function (element: HTMLElement | JQuery<HTMLElement>) {
+        inViewportRight: (element: HTMLElement | JQuery<HTMLElement>) => {
             return viewportUtils.inViewport(element, {sides: [JsViewportSides.RIGHT]});
         },
-        inViewportBottom: function (element: HTMLElement | JQuery<HTMLElement>) {
+        inViewportBottom: (element: HTMLElement | JQuery<HTMLElement>) => {
             return viewportUtils.inViewport(element, {sides: [JsViewportSides.BOTTOM]});
         },
-        inViewportLeft: function (element: HTMLElement | JQuery<HTMLElement>) {
+        inViewportLeft: (element: HTMLElement | JQuery<HTMLElement>) => {
             return viewportUtils.inViewport(element, {sides: [JsViewportSides.LEFT]});
         }
     };

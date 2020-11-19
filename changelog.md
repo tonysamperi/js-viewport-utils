@@ -23,3 +23,7 @@
 * Fixed test page
 * Added Jest tests
 * Refactor
+
+#2.0.3
+* Refactor
+
