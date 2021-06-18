@@ -3,8 +3,8 @@
  *
  * @description A set of viewport utils
  * @author      Tony Samperi, tonysamperi.github.io
- * @version     2.0.0
- * @date        2019-10-03
+ * @version     3.0.0
+ * @date        2021-06-18
  */
 
 import {
@@ -25,11 +25,11 @@ const jsViewportUtils = (() => {
     const viewportUtils = {
         /**
          * Determines whether an element is within the viewport
-         * @param  {HTMLElement|JQuery<HTMLElement>}  elem       DOM Element (required)
+         * @param  {HTMLElement}  elem       DOM Element (required)
          * @param  {JsViewportSettings}  options    Optional settings
          * @return {Boolean}            Whether the element was completely within the viewport
          */
-        inViewport: (elem: HTMLElement | JQuery<HTMLElement>, options?: JsViewportSettings) => {
+        inViewport: (elem: HTMLElement, options?: JsViewportSettings) => {
 
             if (!elem || typeof elem !== "object" || (elem as HTMLElement).nodeType !== 1) {
                 throw new Error("First argument must be an element!");
@@ -45,17 +45,6 @@ const jsViewportUtils = (() => {
             // TMP VARS
             let i: number;
             let result: boolean = !1;
-
-            // Handle jQuery
-            if (typeof jQuery !== "undefined") {
-                if ((elem as JQuery).jquery) {
-                    elem = (elem as JQuery).get(0);
-                }
-                // Extract the DOM node from a jQuery collection
-                if (options && options.container && (options.container as JQuery).jquery) {
-                    options.container = (options.container as JQuery).get(0) as HTMLElement;
-                }
-            }
 
             // Build configuration from defaults and user-provided settings and metadata
             const config: JsViewportConfig = {
@@ -159,16 +148,16 @@ const jsViewportUtils = (() => {
 
             return result;
         },
-        inViewportTop: (element: HTMLElement | JQuery<HTMLElement>) => {
+        inViewportTop: (element: HTMLElement) => {
             return viewportUtils.inViewport(element, {sides: [JsViewportSides.TOP]});
         },
-        inViewportRight: (element: HTMLElement | JQuery<HTMLElement>) => {
+        inViewportRight: (element: HTMLElement) => {
             return viewportUtils.inViewport(element, {sides: [JsViewportSides.RIGHT]});
         },
-        inViewportBottom: (element: HTMLElement | JQuery<HTMLElement>) => {
+        inViewportBottom: (element: HTMLElement) => {
             return viewportUtils.inViewport(element, {sides: [JsViewportSides.BOTTOM]});
         },
-        inViewportLeft: (element: HTMLElement | JQuery<HTMLElement>) => {
+        inViewportLeft: (element: HTMLElement) => {
             return viewportUtils.inViewport(element, {sides: [JsViewportSides.LEFT]});
         }
     };

@@ -15,8 +15,8 @@ const camelize = (str) => {
 export default {
     input: `src/${libraryName}.ts`,
     output: [
-        {file: pkg.main, name: camelize(libraryName), format: "umd", sourcemap: true},
-        {file: pkg.module, format: "es", sourcemap: true},
+        {file: pkg.main, name: "jsViewportUtils", format: "umd", sourcemap: true},
+        {file: pkg.module, format: "cjs", sourcemap: true}
     ],
     // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
     external: [

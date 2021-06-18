@@ -1,10 +1,9 @@
-# JS Viewport Utils 2.0.3
+# JS Viewport Utils 3.0.0
 
 Includes:
 
 - A standalone, plain JavaScript object, `viewportUtils`
 - AMD and Node/CommonJS support
-- Optional jQuery plugin with handy selectors and shorthand methods
 
 ## Installation
 
@@ -28,13 +27,6 @@ And then:
 <script src="path-to/js-viewport-utils.js"></script>
 ```
 
-jQuery plugin:
-
-```js
-<script src="path-to/js-viewport-utils.js"></script>
-<script src="jquery.js"></script>
-```
-
 ### In Angular projects / Typescript / ES6
 ```ts
 import {inViewport, inViewportBottom} from "js-viewport-utils";
@@ -49,6 +41,13 @@ var foo = document.getElementById("foo");
 viewportUtils.inViewport(foo, {sides: "left"});
 ```
 
+If working with jQuery
+
+```js
+var $foo = jQuery("#foo");
+viewportUtils.inViewport($foo[0], {sides: "left"});
+```
+
 Sides can be passed as unique string with spaces
 
 ```js
@@ -58,7 +57,7 @@ var options = {sides: "top right left bottom"}
 ###Use another element as viewport
 
 ```js
-var bar = document.getElementById("bar");
+var bar = document.querySelector("#bar"); // Alternative for `getElementById`
 viewportUtils.inViewport(elem, {container: bar});
 ```
 

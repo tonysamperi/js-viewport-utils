@@ -24,6 +24,12 @@
 * Added Jest tests
 * Refactor
 
-#2.0.3
+#2.0.3 (deprecated)
 * Refactor
 
+#2.0.4
+* Fix bad config breaking umd behaviour (jsViewportUtils var not available anymore)
+
+#3.0.0
+* Removed jQuery support to optimize dependencies, if needed pass ```jqueryEl[0]```
+* Updated source typescript version to 4.2.4

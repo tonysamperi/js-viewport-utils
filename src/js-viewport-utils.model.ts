@@ -1,6 +1,6 @@
 // RAW
 export interface JsViewportSettings {
-    container?: Window | HTMLElement | JQuery;
+    container?: Window | HTMLElement;
     sides?: JsViewportSides[];
     top?: number;
     right?: number;
