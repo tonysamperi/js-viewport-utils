@@ -33,3 +33,6 @@
 #3.0.0
 * Removed jQuery support to optimize dependencies, if needed pass ```jqueryEl[0]```
 * Updated source typescript version to 4.2.4
+
+#3.0.1
+* Version bump to push some dependabot fixes

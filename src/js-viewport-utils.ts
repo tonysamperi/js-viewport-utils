@@ -3,8 +3,8 @@
  *
  * @description A set of viewport utils
  * @author      Tony Samperi, tonysamperi.github.io
- * @version     3.0.0
- * @date        2021-06-18
+ * @version     3.0.1
+ * @date        2023-03-09
  */
 
 import {
