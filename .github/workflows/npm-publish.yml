@@ -23,19 +23,25 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: dist-artifact
-          path: |
-            dist
-            !dist/**/*.foo
+          path: dist
 
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
       - name: Download a single artifact
         uses: actions/download-artifact@v3
         with:
           name: dist-artifact
+          path: dist
       - run: |
+          ls -l
+          echo $(ls -l)
           DIR=dist
           if [ -d "$DIR" ]; then
               echo "$DIR directory exists."
@@ -43,11 +49,6 @@ jobs:
             echo "$DIR directory does not exist."
             exit 1;
           fi
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
