@@ -29,6 +29,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
+          echo $("ls -l")
+          DIR=dist
           if [ -d "$DIR" ]; then
               echo "$DIR directory exists."
           else
