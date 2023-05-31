@@ -1,4 +1,4 @@
-# JS Viewport Utils 3.0.1
+# JS Viewport Utils v3
 
 Includes:
 
