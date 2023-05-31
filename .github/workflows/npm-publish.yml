@@ -19,17 +19,23 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+      - name: Save build output
+        uses: actions/upload-artifact@v3
         with:
-          path: ./dist
+          name: dist-artifact
+          path: |
+            dist
+            !dist/**/*.foo
 
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-artifact
       - run: |
-          echo $("ls -l")
           DIR=dist
           if [ -d "$DIR" ]; then
               echo "$DIR directory exists."
